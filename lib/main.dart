@@ -8,6 +8,25 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  void playSound(int num) {
+    final player = AudioPlayer();
+    player.play(AssetSource('note$num.wav'));
+  }
+
+  Expanded createKey(Color color, int num) {
+    return Expanded(
+      child: TextButton(
+        style: TextButton.styleFrom(
+            backgroundColor: color,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
+        onPressed: () {
+          playSound(num);
+        },
+        child: Text(''),
+      ),
+    );
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,97 +37,13 @@ class MyApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note1.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note2.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.yellow,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note3.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note4.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note5.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note6.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note7.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
+              createKey(Colors.red, 1),
+              createKey(Colors.orange, 2),
+              createKey(Colors.yellow, 3),
+              createKey(Colors.green, 4),
+              createKey(Colors.teal, 5),
+              createKey(Colors.blue, 6),
+              createKey(Colors.purple, 7),
             ],
           ),
         ),
